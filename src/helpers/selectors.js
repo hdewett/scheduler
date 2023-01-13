@@ -1,8 +1,8 @@
 //this func returns a list of the appointments for the given day
-export function getAppointmentsForDay(state, day) {
+function getAppointmentsForDay(state, day) {
   let selectedAppointments;
   let appointmentData = [];
-  console.log("HELPER FUNCTION", state.days);
+
   for (let selectedDay of state.days) {
     if (selectedDay?.name === day){
       selectedAppointments = selectedDay.appointments;
@@ -15,4 +15,16 @@ export function getAppointmentsForDay(state, day) {
     appointmentData.push(state.appointments[id]);
   }
   return appointmentData;
-}
+};
+
+function getInterview(state, interview) {
+
+  if (!interview) return null;
+
+  return {
+    student: interview.student,
+    interviewer: state.interviewers[interview.interviewer]
+  };
+};
+
+export { getAppointmentsForDay, getInterview };

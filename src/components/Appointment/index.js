@@ -9,7 +9,6 @@ export default function Appointment(props) {
 
   return (
     <article className="appointment">
-      {console.log("APPOINTMENT PROPS", props)}
      <Header 
         time={props.time}
       />
