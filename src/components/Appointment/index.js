@@ -9,13 +9,15 @@ export default function Appointment(props) {
 
   return (
     <article className="appointment">
+      {console.log("APPOINTMENT PROPS", props)}
      <Header 
         time={props.time}
       />
       {props.interview ? <Show 
         student={props.interview.student}
-        interviewer={props.interview.interviewer.name}
+        interviewer={props.interview.interviewer}
       />
+
       : <Empty />}
     </article>
   );

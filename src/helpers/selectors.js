@@ -2,8 +2,9 @@
 export function getAppointmentsForDay(state, day) {
   let selectedAppointments;
   let appointmentData = [];
+  console.log("HELPER FUNCTION", state.days);
   for (let selectedDay of state.days) {
-    if (selectedDay.name === day){
+    if (selectedDay?.name === day){
       selectedAppointments = selectedDay.appointments;
     }
   }
