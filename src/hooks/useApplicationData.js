@@ -11,20 +11,24 @@ export default function useApplicationData() {
 
   const setDay = day => setState(prev => ({ ...prev, day })); 
 
-  useEffect(() => {
-    Promise.all([
-      axios.get('/api/days'),
-      axios.get('/api/appointments'),
-      axios.get('/api/interviewers')
-    ]).then((all) => {
-      setState(prev => ({
-        ...prev,
-        days: all[0].data,
-        appointments: all[1].data,
-        interviewers: all[2].data
-      }));
-    });
-  }, [])
+  const updateSpots = (days, appointments) => {
+
+    // Access each day object from the list days.
+    for (let day of days) {
+      let nullSpots =0;
+    // Access the each appointment for each day.
+      for (let appointment of day.appointments) {
+        // nullSpots counts how many available spots there are.
+        if (appointments[appointment].interview == null) {
+          nullSpots++;
+        }
+      }
+      day.spots = nullSpots;
+    }
+
+    return days;
+
+  };
 
   function bookInterview(id, interview) {
 
@@ -38,11 +42,14 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    const days = updateSpots(state.days, appointments);
+
     return axios.put(`/api/appointments/${id}`, {interview})
     .then(() => {
       setState({
         ...state,
-        appointments
+        appointments,
+        days
       })
     })
   };
@@ -56,14 +63,33 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
+
+    const days = updateSpots(state.days, appointments);
+
     return axios.delete(`/api/appointments/${id}`)
       .then(() => {
         setState({
           ...state,
-          appointments
+          appointments,
+          days
         });
       })
   };
+  
+  useEffect(() => {
+    Promise.all([
+      axios.get('/api/days'),
+      axios.get('/api/appointments'),
+      axios.get('/api/interviewers')
+    ]).then((all) => {
+      setState(prev => ({
+        ...prev,
+        days: all[0].data,
+        appointments: all[1].data,
+        interviewers: all[2].data
+      }));
+    });
+  }, []);
 
   return { state, setDay, bookInterview, cancelInterview };
 }
