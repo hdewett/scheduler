@@ -1,10 +1,12 @@
 describe("Navigation", () => {
   it("should visit root", () => {
+    cy.visit("/api/debug/reset");
     cy.visit("/");
   });
 
 
   it("should navigate to Tuesday", () => {
+    cy.visit("/api/debug/reset");
     cy.visit("/");
   
     cy.contains("[data-testid=day]", "Tuesday")
