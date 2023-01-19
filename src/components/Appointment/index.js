@@ -52,7 +52,7 @@ export default function Appointment(props) {
      <Header 
         time={props.time}
       />
-       {mode === CREATE && (
+      {mode === CREATE && (
       <Form 
         interviewers={props.interviewers}  onCancel={() => back()}  onSave={save}
       />
@@ -69,17 +69,17 @@ export default function Appointment(props) {
       {mode === SAVING && <Status
        message={"SAVING"} 
        />
-       }
+      }
       {mode === DELETING && <Status
        message="Deleting" 
        />
-       }
+      }
       {mode === CONFIRM && <Confirm
         message="Are you sure you want to delete this appointment?"
         onCancel={back}
         onConfirm={deleteInterview} 
         />
-        }
+      }
       {mode === ERROR_SAVE && <Error
         onClose={() => back()}
         message={"Failed to save appointment"}
@@ -93,7 +93,7 @@ export default function Appointment(props) {
       {mode === EMPTY && <Empty
        onAdd={() => transition(CREATE)} 
        />
-       }
+      }
       {mode === SHOW && (
         <Show
           student={props.interview.student}

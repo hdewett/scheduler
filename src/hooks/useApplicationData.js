@@ -22,20 +22,6 @@ const useApplicationData = () => {
         return day;
     })
 
-
-    // // Access each day object from the list days.
-    // for (let day of days) {
-    //   let nullSpots = 0;
-    // // Access the each appointment for each day.
-    //   for (let appointment of day.appointments) {
-    //     // nullSpots counts how many available spots there are.
-    //     if (appointments[appointment].interview == null) {
-    //       nullSpots++;
-    //     }
-    //   }
-    //   day.spots = nullSpots;
-    // }
-
     return updatedDays;
 
   };

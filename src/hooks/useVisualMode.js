@@ -5,10 +5,6 @@ export default function useVisualMode(initial) {
 
   function transition(newMode, replace = false) {
 
-    //  setHistory(prev => replace ? [...prev.slice(0, prev.length-1), newMode]:[...prev, newMode]) 
-
-    //Above is a cleaner way to write the same code below but keeping lengthier one for readability.
-
     if (replace) {
       setHistory(prev => [...prev.slice(0, prev.length-1), newMode]);
     } else {
@@ -20,7 +16,7 @@ export default function useVisualMode(initial) {
   function back() {
     if (history.length > 1) {
       setHistory(prev => [...prev.slice(0, prev.length-1)])
-    };
+    }
   };
 
   return {

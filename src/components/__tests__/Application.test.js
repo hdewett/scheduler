@@ -1,5 +1,5 @@
 import React from "react";
-import { render, cleanup, waitForElement, fireEvent, getByText, prettyDOM, getByTestId, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, getByText, getByTestId, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText } from "@testing-library/react";
 import Application from "components/Application";
 import axios from "axios";
 
@@ -126,7 +126,7 @@ it("shows the save error when failing to save an appointment", async () => {
 
 it("shows the delete error when failing to delete an existing appointment", async () => {
 
-  axios.put.mockRejectedValueOnce();
+  axios.delete.mockRejectedValueOnce();
 
   const { container, debug} = render(<Application />);
 
@@ -138,10 +138,8 @@ it("shows the delete error when failing to delete an existing appointment", asyn
 
   fireEvent.click(queryByAltText(appointment, "Delete"));
 
-  // 4. Check that the confirmation message is shown.
   expect(getByText(appointment, "Are you sure you want to delete this appointment?")).toBeInTheDocument();
 
-  // 5. Click the "Confirm" button on the confirmation.
   fireEvent.click(queryByText(appointment, "Confirm"));
 
   expect(getByText(appointment, "Deleting")).toBeInTheDocument();
