@@ -87,7 +87,7 @@ export default {
       status: 204,
       statusText:"No Content",
       
-    })
+    });
   }),
   
   delete: jest.fn((id) => {
@@ -95,6 +95,6 @@ export default {
       status: 204,
       statusText:"No Content",
      
-    })
+    });
   })
 }
