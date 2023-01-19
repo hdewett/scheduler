@@ -58,6 +58,12 @@ npm run Cypress
 
 ### Scheduler View
 
+!["An overview of the app"](https://github.com/hdewett/scheduler/blob/master/docs/Scheduler_view.PNG)
+
 ### Booking/Editing an Appointment
 
+!["Image showing a new appointment being booked"](https://github.com/hdewett/scheduler/blob/master/docs/Booking_appointment.PNG)
+
 ### Deleting an Appointment
+
+!["Image showing the confirmation prompt after hitting delete"](https://github.com/hdewett/scheduler/blob/master/docs/Deleting_appointment.PNG)
