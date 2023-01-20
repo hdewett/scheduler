@@ -1,6 +1,6 @@
 # Interview Scheduler
 
-A clean React project that allows users to book specific time slots with interviewers on available weekdays. They have the ability to edit or change the interviewer, their own name, and delete booked appointments.
+A clean React project that allows users to book specific time slots with interviewers on available weekdays. They have the ability to edit or change details of the interview including: the interviewer, their own name, and delete booked appointments.
 
 ## Key Features
 
